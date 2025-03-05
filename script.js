@@ -9,25 +9,22 @@ const images = [
 function getDailyImage() {
     const startDate = new Date('2025-03-05').getTime();
     const today = new Date();
+    // 强制清除缓存的日期
+    localStorage.removeItem('lastImageDate');
     const currentDate = today.toDateString();
-    const lastDate = localStorage.getItem('lastImageDate');
     const daysPassed = Math.floor((today.getTime() - startDate) / (1000 * 60 * 60 * 24));
     const imageIndex = daysPassed % images.length;
     
     const dailyImage = document.getElementById('dailyImage');
     const imageDate = document.getElementById('imageDate');
     
-    // 总是设置图片源，但只在日期变化时更新 localStorage
-    dailyImage.src = `assets/images/patterns/${images[imageIndex]}`;
+    // 添加时间戳来防止图片缓存
+    dailyImage.src = `assets/images/patterns/${images[imageIndex]}?t=${Date.now()}`;
     imageDate.textContent = today.toLocaleDateString('en-US', {
         year: 'numeric',
         month: 'short',
         day: 'numeric'
     });
-    
-    if (currentDate !== lastDate) {
-        localStorage.setItem('lastImageDate', currentDate);
-    }
 }
 
 function scheduleNextUpdate() {
@@ -38,8 +35,7 @@ function scheduleNextUpdate() {
     
     const timeUntilMidnight = tomorrow - now;
     setTimeout(() => {
-        getDailyImage();
-        scheduleNextUpdate();
+        location.reload(); // 直接刷新页面而不是只更新图片
     }, timeUntilMidnight);
 }
 
