@@ -1,0 +1,49 @@
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: url('assets/images/bg-texture.jpg') center/cover no-repeat;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+.title {
+    font-family: 'Alex Brush', cursive;
+    font-size: 80px;
+    color: #521919;
+    margin: 0 0 20px;
+}
+
+.subtitle {
+    font-family: 'Alice', serif;
+    font-size: 32px;
+    color: #521919;
+    margin: 0 0 40px;
+}
+
+.card {
+    display: inline-block;
+    background: #ffffff;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 
+        0 6px 14px -9px rgba(148, 115, 40, 0.4),
+        0 4px 13.8px 0 rgba(148, 115, 40, 0.25);
+}
+
+#dailyImage {
+    display: block;
+    max-height: 600px;
+    width: auto;
+}
+
+.info {
+    margin-top: 20px;
+    font-family: 'Alice', serif;
+    color: #521919;
+}
