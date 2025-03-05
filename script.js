@@ -7,13 +7,13 @@ const images = [
 ];
 
 function getDailyImage() {
-    const startDate = new Date('2025-03-05').getTime();
+    const startDate = new Date('2024-03-05').getTime();
     const today = new Date();
     // 强制清除缓存的日期
     localStorage.removeItem('lastImageDate');
     const currentDate = today.toDateString();
     const daysPassed = Math.floor((today.getTime() - startDate) / (1000 * 60 * 60 * 24));
-    const imageIndex = daysPassed % images.length;
+    const imageIndex = ((daysPassed % images.length) + images.length) % images.length;
     
     const dailyImage = document.getElementById('dailyImage');
     const imageDate = document.getElementById('imageDate');
@@ -35,7 +35,7 @@ function scheduleNextUpdate() {
     
     const timeUntilMidnight = tomorrow - now;
     setTimeout(() => {
-        location.reload(); // 直接刷新页面而不是只更新图片
+        location.reload();
     }, timeUntilMidnight);
 }
 
