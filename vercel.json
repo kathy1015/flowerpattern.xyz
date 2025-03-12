@@ -1,0 +1,25 @@
+{
+  "redirects": [
+    {
+      "source": "www.flowerpattern.xyz",
+      "destination": "https://flowerpattern.xyz",
+      "permanent": true
+    },
+    {
+      "source": "/:path+/",
+      "destination": "/:path+",
+      "permanent": true
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "index, follow"
+        }
+      ]
+    }
+  ]
+}
